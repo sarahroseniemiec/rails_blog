@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsBlog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <% if session[:user_id] %>
+          <%= link_to("Edit account", edit_user_path(session[:user_id]))%>
+          <%= link_to("Sign out", session_path(session[:user_id]), method: :delete)%>
+        <% else %>
+          <%= link_to("Sign up", new_user_path) %>
+          <%= link_to("Sign in", new_session_path) %>
+        <% end %>
+      </nav>
+    </header>
+
+    <% if flash[:notice] %>
+      <div class="flashnotice">
+        <%= flash[:notice]%>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+    <div class="flashalert">
+      <%= flash[:alert] %>
+    </div>
+    <% end %>
+
+    <%= yield %>
+
+    <footer>
+
+    </footer>
+  </body>
+</html>

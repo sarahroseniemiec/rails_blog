@@ -1,0 +1,23 @@
+<h1>Edit your account</h1>
+
+<div class="editaccountform">
+  <%= form_for @user do |form| %>
+  <div class="">
+    <%= form.label :email, "Email" %>
+    <%= form.email_field :email %>
+  </div>
+  <div class="">
+    <%= form.label :password, "Password" %>
+    <%= form.password_field :password %>
+  </div>
+  <div class="">
+    <%= form.label :fname, "First name" %>
+    <%= form.text_field :fname %>
+  </div>
+  <div class="">
+    <%= form.label :lname, "Last name" %>
+    <%= form.text_field :lname %>
+  </div>
+  <%= form.submit "enter" %>
+  <% end %>
+</div>

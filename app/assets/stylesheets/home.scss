@@ -1,0 +1,15 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+  text-align: center;
+}
+
+input:focus, button:focus {
+    outline: none;
+}
+
+button {
+  border:none;
+  text-transform: uppercase;
+}
