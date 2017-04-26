@@ -33,6 +33,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if params[:id].to_i == session[:user_id]
+    else
+      flash[:alert] = "You do not have access to this page"
+      redirect_to "/"
+    end
   end
 
   def update
@@ -48,6 +53,17 @@ class UsersController < ApplicationController
       flash[:alert] = "There was a problem updating your account, please try again."
       redirect_to edit_user_path(@user)
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      session[:user_id] = nil
+      flash[:notice] = "Your account has been deleted"
+    else
+      flash[:alert] = "The account could not be deleted"
+    end
+    redirect_to "/"
   end
 
 end
