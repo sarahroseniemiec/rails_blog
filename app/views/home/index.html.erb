@@ -1,12 +1,15 @@
 <h1>Blog</h1>
-<% @posts.each do |post| %>
+<div class="center">
+  <% @posts.reverse.each do |post| %>
   <div class="">
     <%= link_to "#{post.user.fname}", user_path(post.user.id), class: "linktoprofile" %>
   </div>
   <div class="">
     <%= post.title %>
+    <%= post.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
   </div>
   <div class="">
     <%= post.content %>
   </div>
-<% end %>
+  <% end %>
+</div>

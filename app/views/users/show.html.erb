@@ -8,19 +8,21 @@
   <div class="center">
     <div class="posttitle">
       <%= post.title %>
+        <%= post.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
     </div>
     <div class="postcontent">
       <%= post.content %>
     </div>
     <div class="">
       <div class="comment">
-        Comments:
+        Comments
       </div>
       <% post.comments.each do |comment| %>
         <%  if comment.user_id == session[:user_id] %>
           <div class="commentname">
             <%= comment.user.fname %>
             <%= comment.user.lname %>
+            <%= comment.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
           </div>
           <div class="commentcontent">
             <%= comment.content %>
@@ -32,6 +34,7 @@
           <div class="commentname">
             <%= comment.user.fname %>
             <%= comment.user.lname %>
+            <%= comment.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
           </div>
           <div class="commentcontent">
             <%= comment.content %>
@@ -42,6 +45,7 @@
     </div>
     <%= link_to("edit post", edit_post_path(post.id))%>
   </div>
+  <hr>
   <% end %>
 
 <% else %>
@@ -49,19 +53,21 @@
   <div class="center">
     <div class="posttitle">
       <%= post.title %>
+      <%= post.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
     </div>
     <div class="postcontent">
       <%= post.content %>
     </div>
     <div class="">
       <div class="comment">
-        Comments:
+        Comments
       </div>
       <% post.comments.each do |comment| %>
       <%  if comment.user_id == session[:user_id] %>
       <div class="commentname">
         <%= comment.user.fname %>
         <%= comment.user.lname %>
+        <%= comment.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
       </div>
       <div class="commentcontent">
         <%= comment.content %>
@@ -73,6 +79,7 @@
         <div class="commentname">
           <%= comment.user.fname %>
           <%= comment.user.lname %>
+          <%= comment.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
         </div>
         <div class="commentcontent">
           <%= comment.content %>
@@ -80,6 +87,7 @@
         <% end %>
       <% end %>
       <%= link_to("comment", new_post_comment_path(post.id))%>
+      <hr>
     </div>
   </div>
   <% end %>
