@@ -18,8 +18,8 @@ class UsersController < ApplicationController
       if @user.save
         @user = User.where(email: params[:user][:email]).first
         session[:user_id] = @user.id
-        flash[:notice] = "Welcome #{@user.fname}!"
-        redirect_to "/"
+        flash[:notice] = "Welcome #{@user.fname.capitalize}!"
+        redirect_to root_path
       else
         flash[:alert] = "There was a problem with the signup please try again."
         redirect_to new_user_path
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     if params[:id].to_i == session[:user_id]
     else
       flash[:alert] = "You do not have access to this page"
-      redirect_to "/"
+      redirect_to root_path
     end
   end
 
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "The account could not be deleted."
     end
-    redirect_to "/"
+    redirect_to root_path
   end
 
 end

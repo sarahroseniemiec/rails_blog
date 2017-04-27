@@ -2,12 +2,16 @@
 <div class="newpostform">
   <%= form_for @post do |form| %>
   <div class="">
-    <%= form.label :title, "Title" %>
+    <div class="">
+      <%= form.label :title, "Title" %>
+    </div>
     <%= form.text_field :title %>
   </div>
   <div class="">
-    <%= form.label :content, "Content" %>
-    <%= form.text_area :content %>
+    <div class="">
+      <%= form.label :content, "Post" %>
+    </div>
+    <%= form.text_area :content, cols: 50, rows: 15 %>
   </div>
   <%= form.submit "enter" %>
   <% end %>

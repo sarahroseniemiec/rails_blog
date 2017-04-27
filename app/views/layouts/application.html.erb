@@ -3,6 +3,7 @@
   <head>
     <title>RailsBlog</title>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -11,19 +12,21 @@
   <body>
     <header>
       <nav>
-        <%= link_to("Home", "/")%>
+        <%= link_to "Home", root_path, class: "navbutt" %>
         <% if session[:user_id] %>
-          <%= link_to("Edit account", edit_user_path(session[:user_id]))%>
-          <%= link_to("Post", new_post_path)%>
-          <%= link_to("Profile", user_path(session[:user_id]))%>
-          <%= link_to("Sign out", session_path(session[:user_id]), method: :delete)%>
+          <%= link_to "Edit account", edit_user_path(session[:user_id]), class: "navbutt" %>
+          <%= link_to "Post", new_post_path, class: "navbutt" %>
+          <%= link_to "Profile", user_path(session[:user_id]), class: "navbutt" %>
+          <%= link_to "Sign out", session_path(session[:user_id]), method: :delete, class: "navbutt" %>
         <% else %>
-          <%= link_to("Sign up", new_user_path) %>
-          <%= link_to("Sign in", new_session_path) %>
+          <%= link_to "Sign up", new_user_path, class: "navbutt" %>
+          <%= link_to "Sign in", new_session_path, class: "navbutt" %>
         <% end %>
       </nav>
     </header>
+    <div class="headspace">
 
+    </div>
     <% if flash[:notice] %>
       <div class="flashnotice">
         <%= flash[:notice]%>

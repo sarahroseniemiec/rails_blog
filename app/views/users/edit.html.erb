@@ -22,4 +22,6 @@
   <% end %>
 </div>
 
-<%= link_to("Delete Account", user_path(@user), method: :delete) %>
+<div class="center">
+  <%= link_to "Delete Account", user_path(@user), method: :delete, class: "delete" %>
+</div>

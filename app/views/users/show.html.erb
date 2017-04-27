@@ -5,36 +5,79 @@
 
 <% if params[:id].to_i == session[:user_id] %>
   <% @posts.each do |post| %>
-  <div class="">
-    <%= post.title %>
-    <%= post.content %>
+  <div class="center">
+    <div class="posttitle">
+      <%= post.title %>
+    </div>
+    <div class="postcontent">
+      <%= post.content %>
+    </div>
     <div class="">
-      <div class="">
+      <div class="comment">
         Comments:
       </div>
       <% post.comments.each do |comment| %>
-      <%= comment.user.fname %>
-      <%= comment.user.lname %>
-      <%= comment.content %>
+        <%  if comment.user_id == session[:user_id] %>
+          <div class="commentname">
+            <%= comment.user.fname %>
+            <%= comment.user.lname %>
+          </div>
+          <div class="commentcontent">
+            <%= comment.content %>
+          </div>
+          <div class="">
+            <%= link_to("edit comment", edit_post_comment_path(post.id, comment.id))%>
+          </div>
+        <% else %>
+          <div class="commentname">
+            <%= comment.user.fname %>
+            <%= comment.user.lname %>
+          </div>
+          <div class="commentcontent">
+            <%= comment.content %>
+          </div>
+        <% end %>
       <% end %>
     <%= link_to("comment", new_post_comment_path(post.id))%>
     </div>
     <%= link_to("edit post", edit_post_path(post.id))%>
   </div>
   <% end %>
+
 <% else %>
   <% @posts.each do |post| %>
-  <div class="">
-    <%= post.title %>
-    <%= post.content %>
+  <div class="center">
+    <div class="posttitle">
+      <%= post.title %>
+    </div>
+    <div class="postcontent">
+      <%= post.content %>
+    </div>
     <div class="">
-      <div class="">
+      <div class="comment">
         Comments:
       </div>
       <% post.comments.each do |comment| %>
-      <%= comment.user.fname %>
-      <%= comment.user.lname %>
-      <%= comment.content %>
+      <%  if comment.user_id == session[:user_id] %>
+      <div class="commentname">
+        <%= comment.user.fname %>
+        <%= comment.user.lname %>
+      </div>
+      <div class="commentcontent">
+        <%= comment.content %>
+      </div>
+      <div class="">
+        <%= link_to("edit comment", edit_post_comment_path(post.id, comment.id))%>
+      </div>
+      <% else %>
+        <div class="commentname">
+          <%= comment.user.fname %>
+          <%= comment.user.lname %>
+        </div>
+        <div class="commentcontent">
+          <%= comment.content %>
+        </div>
+        <% end %>
       <% end %>
       <%= link_to("comment", new_post_comment_path(post.id))%>
     </div>

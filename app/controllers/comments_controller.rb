@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     if @user == session[:user_id]
     else
       flash[:alert] = "You do not have access to this page"
-      redirect_to "/"
+      redirect_to root_path
     end
   end
 
@@ -55,7 +55,7 @@ class CommentsController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = "Your comment could not be deleted."
-      redirect_to root_path
+      redirect_to edit_post_comment_path(@comment)
     end
 
   end

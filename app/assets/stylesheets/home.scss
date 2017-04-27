@@ -1,15 +1,93 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$primary-font: 'Didact Gothic', sans-serif;
+$dustypink: #ffe2ed;
+$black: #232323;
+
+// layout styles
+
+body {
+  font-family: $primary-font;
+  color: $black;
+}
+
 h1 {
   text-align: center;
 }
 
-input:focus, button:focus {
+input:focus, button:focus, textarea:focus {
     outline: none;
 }
 
-button {
-  border:none;
+input, textarea {
+  font-family: $primary-font;
+  font-size: 20px;
+  margin: 10px;
+}
+
+// input {
+//   border: none;
+//   text-decoration: underline;
+// }
+
+input[type="submit"] {
+  border: none;
   text-transform: uppercase;
+  font-size: 20px;
+  margin: 20px;
+  padding: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: $dustypink;
+}
+
+label {
+  font-size: 25px;
+}
+
+a {
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+nav {
+  background-color: rgba(255, 255, 255, 0.8);
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  position: fixed;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.navbutt {
+  color: $black;
+  padding: 10px;
+}
+
+.navbutt:hover {
+  color: $dustypink;
+}
+
+.headspace {
+  height: 50px;
+  width: 100%;
+}
+
+
+
+
+// homepage styles
+
+.linktoprofile {
+  font-size: 20px;
+  color: $black;
+
+}
+
+.linktoprofile:hover {
+  color: $dustypink;
 }

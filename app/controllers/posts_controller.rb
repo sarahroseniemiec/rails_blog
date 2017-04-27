@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     )
     if @post.save
       flash[:notice] = "You're post has been made."
-      redirect_to "/"
+      redirect_to user_path(session[:user_id])
     else
       flash[:alert] = "There was a problem with your post, please try again."
       redirect_to new_post_path
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     if @userpost == session[:user_id]
     else
       flash[:alert] = "You do not have access to this page"
-      redirect_to "/"
+      redirect_to root_path
     end
   end
 
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     @post.content = params[:post][:content]
     if @post.save
       flash[:notice] = "Your post has been updated."
-      redirect_to "/"
+      redirect_to user_path(session[:user_id])
     else
       flash[:alert] = "There was a problem updating your post, please try again."
       redirect_to edit_post_path(@post)
@@ -46,10 +46,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:notice] = "Your post has been deleted."
+      redirect_to user_path(session[:user_id])
     else
       flash[:alert] = "Your post could not be deleted."
+      redirect_to edit_post_path(@post)
     end
-    redirect_to user_path(session[:user_id])
   end
 
 end

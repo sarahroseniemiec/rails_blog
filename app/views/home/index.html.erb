@@ -1,1 +1,12 @@
-Rails Blog Home
+<h1>Blog</h1>
+<% @posts.each do |post| %>
+  <div class="">
+    <%= link_to "#{post.user.fname}", user_path(post.user.id), class: "linktoprofile" %>
+  </div>
+  <div class="">
+    <%= post.title %>
+  </div>
+  <div class="">
+    <%= post.content %>
+  </div>
+<% end %>
