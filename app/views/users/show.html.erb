@@ -8,6 +8,17 @@
   <div class="">
     <%= post.title %>
     <%= post.content %>
+    <div class="">
+      <div class="">
+        Comments:
+      </div>
+      <% post.comments.each do |comment| %>
+      <%= comment.user.fname %>
+      <%= comment.user.lname %>
+      <%= comment.content %>
+      <% end %>
+    <%= link_to("comment", new_post_comment_path(post.id))%>
+    </div>
     <%= link_to("edit post", edit_post_path(post.id))%>
   </div>
   <% end %>
@@ -15,7 +26,18 @@
   <% @posts.each do |post| %>
   <div class="">
     <%= post.title %>
-    <%= post.content %>  
+    <%= post.content %>
+    <div class="">
+      <div class="">
+        Comments:
+      </div>
+      <% post.comments.each do |comment| %>
+      <%= comment.user.fname %>
+      <%= comment.user.lname %>
+      <%= comment.content %>
+      <% end %>
+      <%= link_to("comment", new_post_comment_path(post.id))%>
+    </div>
   </div>
   <% end %>
 <% end %>
