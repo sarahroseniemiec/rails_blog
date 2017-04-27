@@ -1,16 +1,21 @@
-
-<%= @user.fname.capitalize %>
-<%= @user.lname.capitalize %>
+<h1>
+  <%= @user.fname.capitalize %>
+  <%= @user.lname.capitalize %>
+</h1>
 
 <% if params[:id].to_i == session[:user_id] %>
   <% @posts.each do |post| %>
-  <%= post.title %>
-  <%= post.content %>
-  <%= link_to("edit post", edit_post_path(post.id))%>
+  <div class="">
+    <%= post.title %>
+    <%= post.content %>
+    <%= link_to("edit post", edit_post_path(post.id))%>
+  </div>
   <% end %>
 <% else %>
   <% @posts.each do |post| %>
+  <div class="">
     <%= post.title %>
-    <%= post.content %>
+    <%= post.content %>  
+  </div>
   <% end %>
 <% end %>

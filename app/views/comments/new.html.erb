@@ -1,0 +1,12 @@
+<h1>New comment</h1>
+
+<%= @post.user.fname %>
+<%= @post.user.lname %>
+<%= @post.title %>
+<%= @post.content %>
+
+<%= form_for [@post, @comment] do |form| %>
+  <%= form.label :content, "Comment" %>
+  <%= form.text_area :content%>
+  <%= form.submit "comment"%>
+<% end %>
