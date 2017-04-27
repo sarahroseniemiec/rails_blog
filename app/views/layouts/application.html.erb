@@ -11,8 +11,11 @@
   <body>
     <header>
       <nav>
+        <%= link_to("Home", "/")%>
         <% if session[:user_id] %>
           <%= link_to("Edit account", edit_user_path(session[:user_id]))%>
+          <%= link_to("Post", new_post_path)%>
+          <%= link_to("Profile", user_path(session[:user_id]))%>
           <%= link_to("Sign out", session_path(session[:user_id]), method: :delete)%>
         <% else %>
           <%= link_to("Sign up", new_user_path) %>

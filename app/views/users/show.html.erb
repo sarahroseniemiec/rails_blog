@@ -1,3 +1,16 @@
 
 <%= @user.fname.capitalize %>
 <%= @user.lname.capitalize %>
+
+<% if params[:id].to_i == session[:user_id] %>
+  <% @posts.each do |post| %>
+  <%= post.title %>
+  <%= post.content %>
+  <%= link_to("edit post", edit_post_path(post.id))%>
+  <% end %>
+<% else %>
+  <% @posts.each do |post| %>
+    <%= post.title %>
+    <%= post.content %>
+  <% end %>
+<% end %>

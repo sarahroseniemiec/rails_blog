@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = User.find(params[:id]).posts
   end
 
   def edit
@@ -59,9 +60,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       session[:user_id] = nil
-      flash[:notice] = "Your account has been deleted"
+      flash[:notice] = "Your account has been deleted."
     else
-      flash[:alert] = "The account could not be deleted"
+      flash[:alert] = "The account could not be deleted."
     end
     redirect_to "/"
   end
