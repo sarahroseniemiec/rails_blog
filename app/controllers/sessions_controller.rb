@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user = User.where(email: params[:email]).first
     if @user && @user.password == params[:password]
       session[:user_id] = @user.id
-      flash[:notice] = "Welcome, #{@user.fname}!"
+      flash[:notice] = "Welcome, #{@user.fname.capitalize}!"
       redirect_to root_path
     else
       flash[:alert] = "Your email or password did not match, please try again"

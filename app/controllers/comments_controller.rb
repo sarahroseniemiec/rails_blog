@@ -10,11 +10,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(
-    post_id: params[:post_id],
-    user_id: session[:user_id],
-    content: params[:comment][:content]
-    )
+    @comment = Comment.new(comment_params)
+    @comment.post_id = params[:post_id]
+    @comment.user_id = session[:user_id]
+
     if @comment.save
       flash[:notice] = "Your comment has been made."
       redirect_to :back
@@ -37,8 +36,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.content = params[:comment][:content]
-    if @comment.save
+    if @comment.update(comment_params)
       flash[:notice] = "Your comment has been updated"
       redirect_to root_path
     else
@@ -57,8 +55,12 @@ class CommentsController < ApplicationController
       flash[:alert] = "Your comment could not be deleted."
       redirect_to edit_post_comment_path(@comment)
     end
-
   end
 
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 
 end

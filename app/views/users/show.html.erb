@@ -8,7 +8,9 @@
   <div class="center">
     <div class="posttitle">
       <%= post.title %>
-        <%= post.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
+    </div>
+    <div class="posttime">
+      <%= post.updated_at.strftime"%d %B %Y %I:%M %p" %>
     </div>
     <div class="postcontent">
       <%= post.content %>
@@ -22,28 +24,28 @@
           <div class="commentname">
             <%= comment.user.fname %>
             <%= comment.user.lname %>
-            <%= comment.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
+            <%= comment.updated_at.strftime"%d %B %Y %I:%M %p" %>
           </div>
           <div class="commentcontent">
             <%= comment.content %>
           </div>
           <div class="">
-            <%= link_to("edit comment", edit_post_comment_path(post.id, comment.id))%>
+            <%= link_to "edit comment", edit_post_comment_path(post.id, comment.id), class: "linkbutt" %>
           </div>
         <% else %>
           <div class="commentname">
             <%= comment.user.fname %>
             <%= comment.user.lname %>
-            <%= comment.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
+            <%= comment.updated_at.strftime"%d %B %Y %I:%M %p" %>
           </div>
           <div class="commentcontent">
             <%= comment.content %>
           </div>
         <% end %>
       <% end %>
-    <%= link_to("comment", new_post_comment_path(post.id))%>
+    <%= link_to "comment", new_post_comment_path(post.id), class: "linkbutt" %>
     </div>
-    <%= link_to("edit post", edit_post_path(post.id))%>
+    <%= link_to "edit post", edit_post_path(post.id), class: "linkbutt" %>
   </div>
   <hr>
   <% end %>
@@ -53,7 +55,9 @@
   <div class="center">
     <div class="posttitle">
       <%= post.title %>
-      <%= post.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
+    </div>
+    <div class="posttime">
+      <%= post.updated_at.strftime"%d %B %Y %I:%M %p" %>
     </div>
     <div class="postcontent">
       <%= post.content %>
@@ -67,26 +71,26 @@
       <div class="commentname">
         <%= comment.user.fname %>
         <%= comment.user.lname %>
-        <%= comment.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
+        <%= comment.updated_at.strftime"%d %B %Y %I:%M %p" %>
       </div>
       <div class="commentcontent">
         <%= comment.content %>
       </div>
       <div class="">
-        <%= link_to("edit comment", edit_post_comment_path(post.id, comment.id))%>
+        <%= link_to "edit comment", edit_post_comment_path(post.id, comment.id), class: "linkbutt" %>
       </div>
       <% else %>
         <div class="commentname">
           <%= comment.user.fname %>
           <%= comment.user.lname %>
-          <%= comment.updated_at.strftime"%m/%d/%Y %I:%M %p" %>
+          <%= comment.updated_at.strftime"%d %B %Y %I:%M %p" %>
         </div>
         <div class="commentcontent">
           <%= comment.content %>
         </div>
         <% end %>
       <% end %>
-      <%= link_to("comment", new_post_comment_path(post.id))%>
+      <%= link_to "comment", new_post_comment_path(post.id), class: "linkbutt" %>
       <hr>
     </div>
   </div>

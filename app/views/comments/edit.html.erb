@@ -22,5 +22,5 @@
   </div>
     <%= form.submit "edit" %>
   <% end %>
-  <%= link_to("delete comment", post_comment_path(@comment), method: :delete)%>
+  <%= link_to "delete comment", post_comment_path(@comment), method: :delete, class: "delete" %>
 </div>

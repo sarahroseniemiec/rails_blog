@@ -37,10 +37,17 @@ $black: #232323;
 // profile show.erb
 .posttitle {
   font-size: 25px;
+  margin: 10px;
+  // text-transform: uppercase;
+}
+
+.posttime {
+  font-size: 18px;
+
 }
 
 .postcontent {
-  font-size: 20px;
+  font-size: 18px;
 
 }
 
@@ -55,4 +62,8 @@ $black: #232323;
 
 .comment {
   font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 10px;
+
 }

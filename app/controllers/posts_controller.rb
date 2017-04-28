@@ -5,11 +5,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(
-      user_id: session[:user_id],
-      title: params[:post][:title],
-      content: params[:post][:content]
-    )
+    @post = Post.new(post_params)
+    @post.user_id = session[:user_id]
+
     if @post.save
       flash[:notice] = "You're post has been made."
       redirect_to user_path(session[:user_id])
@@ -31,9 +29,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.title = params[:post][:title]
-    @post.content = params[:post][:content]
-    if @post.save
+    if @post.update(post_params)
       flash[:notice] = "Your post has been updated."
       redirect_to user_path(session[:user_id])
     else
@@ -51,6 +47,12 @@ class PostsController < ApplicationController
       flash[:alert] = "Your post could not be deleted."
       redirect_to edit_post_path(@post)
     end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 
 end

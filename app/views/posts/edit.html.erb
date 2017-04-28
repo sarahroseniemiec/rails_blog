@@ -11,8 +11,8 @@
     </div>
     <%= form.text_area :content, cols: 50, rows: 15 %>
     <div class="">
-      <%= form.submit "enter" %>    
+      <%= form.submit "enter" %>
     </div>
   <% end %>
-  <%= link_to("delete post", post_path(@post), method: :delete)%>
+  <%= link_to "delete post", post_path(@post), method: :delete, class: "delete" %>
 </div>

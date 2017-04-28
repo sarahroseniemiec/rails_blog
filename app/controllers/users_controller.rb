@@ -9,19 +9,14 @@ class UsersController < ApplicationController
       flash[:alert] = "That email already exists please login or use a different email address."
       redirect_to new_user_path
     else
-      @user = User.new(
-      email: params[:user][:email],
-      password: params[:user][:password],
-      fname: params[:user][:fname],
-      lname: params[:user][:lname]
-    )
+      @user = User.new(user_params)
       if @user.save
         @user = User.where(email: params[:user][:email]).first
         session[:user_id] = @user.id
         flash[:notice] = "Welcome #{@user.fname.capitalize}!"
         redirect_to root_path
       else
-        flash[:alert] = "There was a problem with the signup please try again."
+        flash[:alert] = "There was a problem with the signup please try again. Password must be at least 5 characters in length."
         redirect_to new_user_path
       end
     end
@@ -43,11 +38,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.email = params[:user][:email]
-    @user.password = params[:user][:password]
-    @user.fname = params[:user][:fname]
-    @user.lname = params[:user][:lname]
-    if @user.save
+    if @user.update(user_params)
       flash[:notice] = "Your account has been updated"
       redirect_to user_path(@user)
     else
@@ -66,5 +57,12 @@ class UsersController < ApplicationController
     end
     redirect_to root_path
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :fname, :lname)
+  end
+
 
 end

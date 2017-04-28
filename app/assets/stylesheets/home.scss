@@ -118,6 +118,34 @@ nav {
   font-size: 20px;
 }
 
+.linkbutt {
+  text-align: center;
+  font-size: 15px;
+  margin: 15px;
+  padding: 10px;
+  background-color: $dustypink;
+  width: 120px;
+  color: black;
+  display: inline-block;
+}
+
+.linkbutt:hover {
+
+}
+
+hr {
+  margin: 20px;
+  background-color: $gray;
+}
+
+footer {
+  background-color: $dustypink;
+  width: 100%;
+  height: 50px;
+  left: 0px;
+  bottom: 0px;
+}
+
 // homepage styles
 
 .linktoprofile {
