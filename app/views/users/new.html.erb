@@ -2,21 +2,21 @@
 
 <div class="signupform">
   <%= form_for @user do |form| %>
+  <%= form.email_field :email %>
   <div class="">
     <%= form.label :email, "Email" %>
-    <%= form.email_field :email %>
   </div>
+    <%= form.password_field :password %>
   <div class="">
     <%= form.label :password, "Password" %>
-    <%= form.password_field :password %>
   </div>
+  <%= form.text_field :fname %>
   <div class="">
     <%= form.label :fname, "First name" %>
-    <%= form.text_field :fname %>
   </div>
+  <%= form.text_field :lname %>
   <div class="">
     <%= form.label :lname, "Last name" %>
-    <%= form.text_field :lname %>
   </div>
   <%= form.submit "enter" %>
   <% end %>

@@ -1,14 +1,26 @@
 <h1>Edit Comment</h1>
+<div class="center">
+  <div class="posttitle">
+    <%= @post.title %>
+  </div>
+  <div class="">
+    <%= @post.user.fname %>
+    <%= @post.user.lname %>
+  </div>
+  <div class="postcontent">
+    <%= @post.content %>
+  </div>
+</div>
 
-<%= @post.title %>
-<%= @post.user.fname %>
-<%= @post.user.lname %>
-<%= @post.content %>
-
-<%= form_for [@post, @comment] do |form| %>
-  <%= form.label :content, "Comment"%>
-  <%= form.text_area :content %>
-  <%= form.submit "edit" %>
-<% end %>
-
-<%= link_to("delete comment", post_comment_path(@comment), method: :delete)%>
+<div class="center">
+  <%= form_for [@post, @comment] do |form| %>
+  <div class="">
+    <%= form.label :content, "Comment"%>
+  </div>
+  <div class="">
+    <%= form.text_area :content, cols: 50, rows: 8 %>
+  </div>
+    <%= form.submit "edit" %>
+  <% end %>
+  <%= link_to("delete comment", post_comment_path(@comment), method: :delete)%>
+</div>

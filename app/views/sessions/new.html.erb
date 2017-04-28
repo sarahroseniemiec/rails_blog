@@ -1,9 +1,14 @@
 <h1>Sign In</h1>
-
-<%= form_tag("/sessions", method: "post") do %>
-  <%= label_tag(:email, "Email") %>
-  <%= email_field_tag(:email) %>
-  <%= label_tag(:password, "Password") %>
-  <%= password_field_tag(:password) %>
-  <%= submit_tag "enter" %>
-<% end %>
+<div class="center">
+  <%= form_tag("/sessions", method: "post") do %>
+    <%= email_field_tag(:email) %>
+    <div class="">
+      <%= label_tag(:email, "Email") %>
+    </div>
+    <%= password_field_tag(:password) %>
+    <div class="">
+      <%= label_tag(:password, "Password") %>
+    </div>
+    <%= submit_tag "enter" %>
+  <% end %>
+</div>
