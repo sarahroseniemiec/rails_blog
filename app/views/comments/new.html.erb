@@ -3,9 +3,9 @@
   <div class="posttitle">
     <%= @post.title %>
   </div>
-  <div class="">
-    <%= @post.user.fname %>
-    <%= @post.user.lname %>
+  <div class="postname">
+    <%= @post.user.fname.capitalize %>
+    <%= @post.user.lname.capitalize %>
   </div>
   <div class="postcontent">
     <%= @post.content %>

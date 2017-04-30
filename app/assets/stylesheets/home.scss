@@ -5,7 +5,15 @@ $primary-font: 'Didact Gothic', sans-serif;
 $dustypink: #ffe2ed;
 $black: #232323;
 $gray: #cecece;
+$darkgray: #6d6d6d;
+$green: rgb(197, 255, 242);
 // layout styles
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 
 .contentcontainer {
   background-color: white;
@@ -26,6 +34,28 @@ body {
 h1 {
   text-align: center;
 }
+
+h2 {
+  text-align: center;
+}
+
+.blog {
+  font-size: 50px;
+  text-transform: uppercase;
+  display: inline;
+  position: absolute;
+}
+
+.empty {
+  width: 150px;
+  display: inline-block;
+}
+
+.cactus {
+  width: 100%;
+
+}
+
 
  button:focus, textarea:focus {
     outline: none;
@@ -66,10 +96,14 @@ input[type="submit"] {
   margin: 20px;
   padding: 10px;
   width: 120px;
+  background-color: $black;
+  color: white;
+
 }
 
 input[type="submit"]:hover {
   background-color: $dustypink;
+  color: black;
 }
 
 label {
@@ -83,7 +117,7 @@ a {
   text-decoration: none;
 }
 
-nav {
+.fixnav {
   background-color: rgba(255, 255, 255, 0.8);
   top: 0px;
   left: 0px;
@@ -92,7 +126,21 @@ nav {
   z-index: 10;
   font-size: 20px;
   padding: 10px;
+  text-align: center;
 }
+
+.startnav {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  top: 300px;
+  left: 0px;
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  z-index: 5;
+}
+
 
 .navbutt {
   color: $black;
@@ -130,6 +178,8 @@ nav {
 }
 
 .linkbutt:hover {
+  background-color: $black;
+  color: white;
 
 }
 

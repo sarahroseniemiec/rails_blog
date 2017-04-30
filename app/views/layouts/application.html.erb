@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>RailsBlog</title>
+    <%= favicon_link_tag 'cactus.png' %>
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
 
@@ -11,7 +12,11 @@
 
   <body>
     <header>
-      <nav>
+      <div class="center">
+        <%= image_tag "banner.png", class: "cactus" %>
+      </div>
+
+      <nav id="nav" class="startnav">
         <%= link_to "Home", root_path, class: "navbutt" %>
         <% if session[:user_id] %>
           <%= link_to "Edit account", edit_user_path(session[:user_id]), class: "navbutt" %>
@@ -46,7 +51,7 @@
     </div>
 
     <footer>
-      
+
     </footer>
   </body>
 </html>

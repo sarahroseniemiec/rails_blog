@@ -10,21 +10,25 @@
       <%= post.title %>
     </div>
     <div class="posttime">
-      <%= post.updated_at.strftime"%d %B %Y %I:%M %p" %>
+      <%= post.created_at.strftime"%d %B %Y %I:%M %p" %>
     </div>
     <div class="postcontent">
       <%= post.content %>
     </div>
     <div class="">
+    <%= link_to "edit post", edit_post_path(post.id), class: "linkbutt" %>
       <div class="comment">
+        <%= post.comments.count %>
         Comments
       </div>
       <% post.comments.each do |comment| %>
         <%  if comment.user_id == session[:user_id] %>
           <div class="commentname">
-            <%= comment.user.fname %>
-            <%= comment.user.lname %>
-            <%= comment.updated_at.strftime"%d %B %Y %I:%M %p" %>
+            <%=link_to "#{comment.user.fname.capitalize} #{comment.user.lname.capitalize}", user_path(comment.user.id),
+                class: "linktocommenter" %>
+          </div>
+          <div class="commenttime">
+            <%= comment.created_at.strftime"%d %B %Y %I:%M %p" %>
           </div>
           <div class="commentcontent">
             <%= comment.content %>
@@ -34,9 +38,11 @@
           </div>
         <% else %>
           <div class="commentname">
-            <%= comment.user.fname %>
-            <%= comment.user.lname %>
-            <%= comment.updated_at.strftime"%d %B %Y %I:%M %p" %>
+          <%=link_to "#{comment.user.fname.capitalize} #{comment.user.lname.capitalize}", user_path(comment.user.id),
+              class: "linktocommenter" %>
+          </div>
+          <div class="commenttime">
+            <%= comment.created_at.strftime"%d %B %Y %I:%M %p" %>
           </div>
           <div class="commentcontent">
             <%= comment.content %>
@@ -45,7 +51,6 @@
       <% end %>
     <%= link_to "comment", new_post_comment_path(post.id), class: "linkbutt" %>
     </div>
-    <%= link_to "edit post", edit_post_path(post.id), class: "linkbutt" %>
   </div>
   <hr>
   <% end %>
@@ -57,21 +62,24 @@
       <%= post.title %>
     </div>
     <div class="posttime">
-      <%= post.updated_at.strftime"%d %B %Y %I:%M %p" %>
+      <%= post.created_at.strftime"%d %B %Y %I:%M %p" %>
     </div>
     <div class="postcontent">
       <%= post.content %>
     </div>
     <div class="">
       <div class="comment">
+        <%= post.comments.count %>
         Comments
       </div>
       <% post.comments.each do |comment| %>
       <%  if comment.user_id == session[:user_id] %>
       <div class="commentname">
-        <%= comment.user.fname %>
-        <%= comment.user.lname %>
-        <%= comment.updated_at.strftime"%d %B %Y %I:%M %p" %>
+        <%=link_to "#{comment.user.fname.capitalize} #{comment.user.lname.capitalize}", user_path(comment.user.id),
+            class: "linktocommenter" %>
+      </div>
+      <div class="commenttime">
+        <%= comment.created_at.strftime"%d %B %Y %I:%M %p" %>
       </div>
       <div class="commentcontent">
         <%= comment.content %>
@@ -81,9 +89,11 @@
       </div>
       <% else %>
         <div class="commentname">
-          <%= comment.user.fname %>
-          <%= comment.user.lname %>
-          <%= comment.updated_at.strftime"%d %B %Y %I:%M %p" %>
+          <%=link_to "#{comment.user.fname.capitalize} #{comment.user.lname.capitalize}", user_path(comment.user.id),
+              class: "linktocommenter" %>
+        </div>
+        <div class="commenttime">
+          <%= comment.created_at.strftime"%d %B %Y %I:%M %p" %>
         </div>
         <div class="commentcontent">
           <%= comment.content %>

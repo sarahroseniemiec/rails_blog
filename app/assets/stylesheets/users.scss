@@ -4,6 +4,7 @@
 $dustypink: #ffe2ed;
 $gray: #cecece;
 $black: #232323;
+$darkgray: #6d6d6d;
 
 
 // edit account
@@ -22,42 +23,64 @@ $black: #232323;
 .delete {
   text-align: center;
   font-size: 20px;
+  display: inline-block;
   margin: 20px;
   padding: 10px;
-  background-color: $dustypink;
+  background-color: $black;
+  color: white;
   width: 200px;
-  color: black;
+
 }
 
 .delete:hover {
-  background-color: $black;
-  color: white;
+  background-color: $dustypink;
+  color: $black;
 }
 
 // profile show.erb
 .posttitle {
-  font-size: 25px;
+  font-size: 30px;
   margin: 10px;
   // text-transform: uppercase;
 }
 
 .posttime {
   font-size: 18px;
+  color: $darkgray;
+  margin: 5px;
 
+}
+
+.postname {
+  font-size: 20px;
 }
 
 .postcontent {
   font-size: 18px;
+  margin: 10px;
 
 }
+
 
 .commentcontent {
   font-size: 20px;
 }
 
-.commentname {
+.linktocommenter {
   font-size: 20px;
-  color: $gray;
+  color: $darkgray;
+  text-transform: none;
+}
+
+.linktocommenter:hover {
+  color: $dustypink;
+}
+
+
+
+.commenttime {
+  font-size: 18px;
+  color: $darkgray;
 }
 
 .comment {
