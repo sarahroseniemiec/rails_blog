@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
+# controls page where someone signs up
   def new
     @user = User.new
   end
 
+# checks to see if someone with the email entered is already in the system if they are then it alerts the user. Otherwise it trys to save the user.
   def create
     if User.find_by(email: params[:user][:email])
       flash[:alert] = "That email already exists please login or use a different email address."
@@ -22,11 +24,13 @@ class UsersController < ApplicationController
     end
   end
 
+# finds the user from the url and their corresponding posts
   def show
     @user = User.find(params[:id])
     @posts = User.find(params[:id]).posts
   end
 
+# controls the page to edit user info and checks to see if the person logged in corresponds to the user id in the url if it does they can edit their info if not they are redirected because I don't want a user to edit a different users info.
   def edit
     @user = User.find(params[:id])
     if params[:id].to_i == session[:user_id]
@@ -36,6 +40,7 @@ class UsersController < ApplicationController
     end
   end
 
+# updates the users information
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -47,6 +52,7 @@ class UsersController < ApplicationController
     end
   end
 
+# deletes a user from the database and ends their session (logs them out)
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
@@ -59,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   private
-
+# strong params
   def user_params
     params.require(:user).permit(:email, :password, :fname, :lname)
   end

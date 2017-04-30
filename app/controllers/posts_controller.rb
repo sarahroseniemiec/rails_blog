@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
-
+# controls the page for making a new post
   def new
     @post = Post.new
   end
 
+# creates a new post and sets the user_id to the current user's id.
   def create
     @post = Post.new(post_params)
     @post.user_id = session[:user_id]
@@ -17,6 +18,7 @@ class PostsController < ApplicationController
     end
   end
 
+# controls the page to edit a post and finds the post from the url then checks to see if the post belongs to the person logged in if it does they can edit their post, if not they are redirected because I don't want a user to edit a different user's post.
   def edit
     @post = Post.find(params[:id])
     @userpost = @post.user_id
@@ -27,6 +29,7 @@ class PostsController < ApplicationController
     end
   end
 
+# updates a post
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -38,6 +41,7 @@ class PostsController < ApplicationController
     end
   end
 
+# deletes a post
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
@@ -50,7 +54,7 @@ class PostsController < ApplicationController
   end
 
   private
-
+# strong params
   def post_params
     params.require(:post).permit(:title, :content)
   end

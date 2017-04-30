@@ -12,6 +12,7 @@ module RailsBlog
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.action_controller.permit_all_parameters = false
+    # sets time zone to NY time so that the posts and comments will display with the correct time. 
     config.time_zone = 'Eastern Time (US & Canada)'
   end
 end

@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
-
+  
+# controls sign in page
   def new
 
   end
 
+# signs a person in if their email and password are correct
   def create
     @user = User.where(email: params[:email]).first
     if @user && @user.password == params[:password]
@@ -16,6 +18,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # signs out a user
   def destroy
     session[:user_id] = nil
     redirect_to root_path

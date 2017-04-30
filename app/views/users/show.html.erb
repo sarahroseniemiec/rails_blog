@@ -2,7 +2,7 @@
   <%= @user.fname.capitalize %>
   <%= @user.lname.capitalize %>
 </h1>
-
+<!-- checks to see if the profile belongs to the person that is logged in. If it does then they have the ability to edit the posts, if not they can just read the posts and comments, the inner if statements check to see if the comments belong to the person logged in and if they do they have the ability to edit their comments.  -->
 <% if params[:id].to_i == session[:user_id] %>
   <% @posts.each do |post| %>
   <div class="center">

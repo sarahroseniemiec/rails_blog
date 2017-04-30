@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+# has to listen for the turolinks to be loaded not the doc to be ready because turbolinks does not reload the page and the code would only work on refresh otherwise then it makes the nav bar fixed at a certain point on the page.
 
 document.addEventListener 'turbolinks:load', ->
 
